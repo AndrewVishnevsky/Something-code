@@ -1,0 +1,69 @@
+// ConsoleApplication4.cpp: определяет точку входа для консольного приложения.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <time.h>
+#include <iterator>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+	int a = 0,it,size=20,pos=0;
+	srand(time(NULL));
+	cout << "Enter a random digit" << endl;
+	vector<int>vecInt(size);
+	generate(vecInt.begin(), vecInt.end(), []() { return rand() % 50; });
+	cin >>a;
+	//vecInt.begin.at(a);
+	//vecInt.end = a;
+	vecInt.front() = a;
+	vecInt.back() = a;
+	auto min = min_element(vecInt.begin(), vecInt.end());
+	//vecInt.push_back(153);
+	cout << "First element" << endl;
+	cout << vecInt.front() << endl;
+	cout << "Last element" << endl;
+	cout << vecInt.back() << endl;
+	cout << "Min element" << endl;
+	cout << *min << endl;
+	cout << "All elements" << endl;
+
+	for (int i = 0;i<size; ++i)
+	{
+		cout <<i<<" is "<< vecInt[i]<<endl;
+		if (vecInt[i]==*min)
+		{
+			pos = i;
+		}
+		
+	};
+	cout << "Position min element " <<pos<< endl;
+	
+	
+	
+		sort(vecInt.begin(), vecInt.begin()+vecInt.at(pos), greater<int>());
+		cout << "All elements sorted +" << endl;
+		for (int i = 0; i<size; ++i)
+		{
+			cout << i << " is " << vecInt[i] << endl;
+		};
+	
+	//cout << vecInt.end << endl;
+	/*
+	reverse(vecInt.begin(), vecInt.end());
+	cout << "All elements sorted -" << endl;
+	for (int i = 0; i<size; ++i)
+	{
+		cout << i + 1 << " is " << vecInt[i] << endl;
+	};
+	*/
+	
+
+    return 0;
+}
+
